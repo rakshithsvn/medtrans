@@ -37,7 +37,7 @@
         color: white;
         text-align: center;
         line-height: 30px;
-        font-weight: normal;
+        font-weight: 700;
         margin-right: 10px; font-size: 12px;
     }
 
@@ -1379,6 +1379,9 @@
     window.onload = initMap;
 </script> -->
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoKzYVqTTqsyvbKY1KxVBEElKApT3VGiE&v=beta&libraries=marker&map_ids=3cb390091873f7c4" async defer></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google_maps.key') }}&v=beta&libraries=marker&map_ids={{ config('services.google_maps.map_id') }}"
+    async defer>
+</script>
 
 @endsection
