@@ -1,0 +1,56 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+
+    RewriteCond %{HTTPS} !on
+    RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+Header append X-FRAME-OPTIONS "SAMEORIGIN"
+#Header Referrer-Policy "strict-origin-when-cross-origin" always;
+#Header set Content-Security-Policy "default-src 'self'";
+#Header set Content-Security-Policy content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-inline' fonts.googleapis.com ajax.googleapis.com cdn.datatables.net cdn.jsdelivr.net *.razorpay.com checkout.razorpay.com sdk.cashfree.com medlead.com ;”
+#Header add Content-Security-Policy "default-src 'self' *;”
+#Header add Content-Security-Policy "default-src 'self' *.googleapis.com *.cdn.jsdelivr.net medlead.com;" 
+#Header add Content-Security-Policy  default-src ‘self’; 
+#Header set Content-Security-Policy "default-src https:; font-src https: data:; img-src https: data:; script-src https:; style-src https:;"
+#Header unset Content-Security-Policy
+#Add the entire CSP key value pairs that you want below is just default-src
+#Header add Content-Security-Policy "default-src 'self'"
+#This opens support to older browsers that support X-Content-Security-Policy but not Content-Security-Policy
+#Header unset X-Content-Security-Policy
+#Header add X-Content-Security-Policy "default-src 'self'"
+#This opens support to older browsers that support X-WebKit-CSP but not Content-Security-Policy
+#Header unset X-WebKit-CSP
+#Header add X-WebKit-CSP "default-src 'self'"
+
+#These headers are also helpful in increasing security
+#Header set X-Content-Type-Options "nosniff"
+#Header set X-XSS-Protection "1; mode=block"
+#Header set X-Frame-Options "DENY"
+#Header set Strict-Transport-Security "max-age=631138519; includeSubDomains"
+ # Header always set X-XSS-Protection "1; mode=block"
+  #  Header always set x-Frame-Options "SAMEORIGIN"
+ #   Header always set X-Content-Type-Options "nosniff"
+ #   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+#    Header always set Content-Security-Policy "default-src 'self'; font-src *;img-src * data:; script-src *; style-src *;"
+  #  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+ #Header set Content-Security-Policy "policy-definition"
+#Referrer-Policy: strict-origin-when-cross-origin;
+
+</IfModule>
