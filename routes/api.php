@@ -18,9 +18,9 @@ use App\Http\Middleware\VerifyToken;
 |
 */
 
-Route::prefix('api/v1')->group(function () {
+Route::prefix('v1')->group(function () {
 
-    Route::post('register', [APIController::class, 'register'])->name('register');
+    Route::post('register', [APIController::class, 'register'])->name('userRegister');
     Route::post('auth', [APIController::class, 'login'])->name('auth');
 
     Route::middleware(['verifyToken'])->group(function () {
@@ -34,7 +34,7 @@ Route::prefix('api/v1')->group(function () {
         Route::post('trip-update', [APIController::class, 'tripUpdate'])->name('tripUpdate');
         Route::post('fuel-update', [APIController::class, 'fuelUpdate'])->name('fuelUpdate');
         Route::post('checklist-update', [APIController::class, 'checklistUpdate'])->name('checklistUpdate');
-        Route::post('logout', [APIController::class, 'logout'])->name('logout');
+        Route::post('logout', [APIController::class, 'logout'])->name('userLogout');
     });
 
 

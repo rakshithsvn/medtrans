@@ -20,7 +20,7 @@
     </div>
     @endif
 
-    <form id="logins-form" method="POST" action="{{ route('admin-login') }}">
+    <form id="logins-form" method="POST" action="{{ route('post-admin-login') }}">
         @csrf
         <input type="hidden" name="register_by" value="ADMIN" class="form-control form-control-md">
         <input type="hidden" name="latitude" id="latitude">

@@ -43,7 +43,7 @@ input[type=number]::-webkit-outer-spin-button {
             </div>
             @endif
             
-            <form method="POST" action="{{ route('register') }}" id="registration-form">
+            <form method="POST" action="{{ route('post-register') }}" id="registration-form">
                 @csrf
                 <div class="form-group position-relative has-icon-left mt-4 mb-4">
                     <input type="radio" name="register_by" value="STUDENT" class="logintype" v-model="registerBy" required> <span class="labelname">Student</span>

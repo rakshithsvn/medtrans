@@ -53,9 +53,9 @@ Auth::routes();
 Route::get('/', [AuthController::class, 'index']);
 
 Route::get('login', [AuthController::class, 'index'])->name('login');
-Route::post('login', [AuthController::class, 'postLogin'])->name('login');
+Route::post('login', [AuthController::class, 'postLogin'])->name('post-login');
 // Route::get('register', [AuthController::class, 'registration'])->name('register');
-// Route::post('register', [AuthController::class, 'postRegistration'])->name('register');
+// Route::post('register', [AuthController::class, 'postRegistration'])->name('post-register');
 
 Route::middleware(['auth'])->group(function () {
 
@@ -180,10 +180,10 @@ Route::get('/auth/google-callback', [SocialiteAuthController::class, 'loginWithG
 // Admin
 
 Route::get('admin-login', [AuthController::class, 'index'])->name('admin-login');
-Route::post('admin-login', [AuthController::class, 'postLogin'])->name('admin-login');
+Route::post('admin-login', [AuthController::class, 'postLogin'])->name('post-admin-login');
 
 Route::get('authRegister', [AuthController::class, 'registration'])->name('authRegister');
-Route::post('authRegister', [AuthController::class, 'postRegistration'])->name('authRegister');
+Route::post('authRegister', [AuthController::class, 'postRegistration'])->name('post-authRegister');
 
 Route::get('admin/forgot-password', [AuthController::class, 'forgotPassword'])->name('admin-forgot-password');
 Route::post('admin/post-forgot-password', [AuthController::class, 'postForgotPassword'])->name('admin/post-forgot-password');
@@ -197,7 +197,7 @@ Route::middleware(['auth', 'is_verify_email'])->group(function () {
 
     Route::get('admin-logout', [AuthController::class, 'logout'])->name('admin-logout');
     Route::get('admin/change-password', [AuthController::class, 'changePassword'])->name('admin/change-password');
-    Route::post('admin/change-password', [AuthController::class, 'postChangePassword'])->name('admin/change-password');
+    Route::post('admin/change-password', [AuthController::class, 'postChangePassword'])->name('admin/post-change-password');
 
     Route::get('admin/profile/{id?}', [BackHomeController::class, 'profile'])->name('profile');
 
@@ -215,7 +215,7 @@ Route::middleware(['auth', 'is_verify_email'])->group(function () {
     Route::post('admin/update-role', [BackHomeController::class, 'storeRole'])->name('admin/update-role');
 
     Route::get('admin/users', [BackHomeController::class, 'users'])->name('users');
-    Route::post('admin/users', [BackHomeController::class, 'filterUsers'])->name('users');
+    Route::post('admin/users', [BackHomeController::class, 'filterUsers'])->name('post-users');
 
     Route::get('admin/user-verify/{id?}', [BackHomeController::class, 'userVerify'])->name('user-verify');
     Route::post('admin/reset-password', [BackHomeController::class, 'postResetPassword'])->name('admin-reset-password');
@@ -225,8 +225,6 @@ Route::middleware(['auth', 'is_verify_email'])->group(function () {
     Route::get('admin/query', [BackHomeController::class, 'adminRunQuery'])->name('get.admin.query');
     Route::post('admin/query', [BackHomeController::class, 'submitAdminRunQuery'])->name('post.admin.query');
 });
-
-require __DIR__.'/api.php';
 
 Route::get('errorpage',function(){
     return view('errors.404');

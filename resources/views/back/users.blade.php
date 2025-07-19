@@ -10,7 +10,7 @@
 
             <!-- Filter Form -->
             <div class="text-right">
-                <form id="update-form" action="{{ route('users') }}" method="POST" class="">
+                <form id="update-form" action="{{ route('post-users') }}" method="POST" class="">
                     @csrf
                     <div class="row g-3 align-items-center">
                         <!-- Filter Fields (Grouped on the Left) -->

@@ -6,7 +6,7 @@
     <div class="card shadow-sm p-4">
         <h6 class="border-bottom mb-3 profile_pge">{{ __('CHANGE PASSWORD') }}</h6>
 
-        <form action="{{route('admin/change-password')}}" method="POST">
+        <form action="{{route('admin/post-change-password')}}" method="POST">
             @csrf
             <div class="row">
                 <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 mt-2">
